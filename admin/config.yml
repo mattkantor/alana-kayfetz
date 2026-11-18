@@ -1,0 +1,28 @@
+# Blog editor at /admin. Saving a post commits to GitHub; Cloudflare Pages rebuilds.
+backend:
+  name: github
+  repo: mattkantor/alana-kayfetz
+  branch: main
+  # base_url: https://sveltia-cms-auth.<you>.workers.dev   # TODO: OAuth worker, see README-blog.md
+
+media_folder: img/blog
+public_folder: /img/blog
+
+collections:
+  - name: posts
+    label: Blog posts
+    label_singular: Post
+    folder: blog/posts
+    create: true
+    format: json            # ponytail: JSON so build.mjs needs no YAML parser
+    extension: json
+    slug: "{{slug}}"
+    sortable_fields: [date, title]
+    summary: "{{title}} ({{date}}){{draft | ternary(' · DRAFT', '')}}"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Publish date, widget: datetime, time_format: false, date_format: "YYYY-MM-DD", format: "YYYY-MM-DD" }
+      - { name: description, label: Short summary (for Google and social shares), widget: text }
+      - { name: image, label: Cover image, widget: image, required: false }
+      - { name: draft, label: Draft (hidden from the site), widget: boolean, default: true }
+      - { name: body, label: Post, widget: markdown }

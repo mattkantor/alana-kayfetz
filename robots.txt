@@ -1,0 +1,4 @@
+# Staging on Cloudflare Pages - not the live domain yet.
+# Run ./set-domain.sh <real-domain> at launch to open this up.
+User-agent: *
+Disallow: /
