@@ -158,7 +158,8 @@ src="https://www.facebook.com/tr?id=386179845467079&amp;ev=ViewContent&amp;noscr
 <nav>
   <div class="nav-inner">
     <a href="/" class="logo">Alana <span>Kayfetz</span></a>
-    <div class="nav-links">
+    <button class="burger" aria-label="Menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.closest('nav').classList.toggle('open'))">&#9776;</button>
+    <div class="nav-links" onclick="if(event.target.closest('a')){this.closest('nav').classList.remove('open');this.previousElementSibling.setAttribute('aria-expanded',false)}">
       <a href="/#coaching">Coaching</a>
       <a href="/#scholars">Scholars</a>
       <a href="/brands/">Brands</a>
